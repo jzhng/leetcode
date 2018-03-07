@@ -25,4 +25,4 @@ function printLinkedList(head) {
   console.info(s);
 }
 
-module.exports = { createLinkedList, printLinkedList };
+module.exports = { createLinkedList, printLinkedList, ListNode };
