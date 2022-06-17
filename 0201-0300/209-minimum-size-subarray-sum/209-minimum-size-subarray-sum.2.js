@@ -2,7 +2,7 @@
  * @param {number} s
  * @param {number[]} nums
  * @return {number}
- * optimze brute force solution to O(n2)
+ * optimize brute force solution to O(n2)
  */
 var minSubArrayLen = function(s, nums) {
   const n = nums.length;

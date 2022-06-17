@@ -4,7 +4,7 @@
  * @return {number}
  */
 var findKthLargest = function(nums, k) {
-  // use partition mechnism in quick sort
+  // use partition mechanism in quick sort
   function _partition(arr, l, r) {
     _swap(arr, l, Math.floor(Math.random() * (r - l + 1)) + l);
     const v = arr[l];

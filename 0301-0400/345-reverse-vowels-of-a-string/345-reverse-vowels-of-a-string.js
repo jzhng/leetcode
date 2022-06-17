@@ -10,7 +10,6 @@ var reverseVowels = function(s) {
 
   const n = s.length - 1;
   const regex = /[aeiou]/i;
-  let l = 0, r = n;
   for (let l = 0, r = n; l <= r; l++, r--) {
     while (l <= n && !regex.test(s[l])) {
       l++;

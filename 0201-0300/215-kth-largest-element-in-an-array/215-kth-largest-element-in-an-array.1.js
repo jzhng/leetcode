@@ -7,7 +7,7 @@
  * @return {number}
  */
 var findKthLargest = function(nums, k) {
-  // asume quick sort, O(nlogn);
+  // assume quick sort, O(nlogn);
   nums.sort((a, b) => (b - a));
   return nums[k - 1];
 };
