@@ -1,4 +1,6 @@
 bin/
 a.out
+a.out.dSYM/
 a.exe
 test.cc
+.vscode

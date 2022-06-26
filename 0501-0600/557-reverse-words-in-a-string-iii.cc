@@ -5,16 +5,17 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        int i = 0;
-        for (int j = 0; j < s.size(); ++j) {
-            if (s[j] == ' ') {
-                for (int k = i, l = j-1; k < l; ++k, --l)
-                    swap(s[k], s[l]);
-                i = j+1;
+        int i = 0, n = s.size();
+        while (i < n) {
+            int l = i;
+            while (i < n && s[i] != ' ') ++i;
+
+            for (int r = i - 1; l < r; ++l, --r) {
+                swap(s[l], s[r]);
             }
+
+            while (i < n && s[i] == ' ') ++i;
         }
-        for (int j = i, l = s.size()-1; j < l; ++j, --l)
-            swap(s[j], s[l]);
         return s;
     }
 };
