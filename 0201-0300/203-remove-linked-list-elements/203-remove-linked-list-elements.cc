@@ -12,8 +12,8 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-        ListNode *dummy = new ListNode(0, head);
-        ListNode *pre = dummy, *cur = head;
+        ListNode dummy(0, head);
+        ListNode *pre = &dummy, *cur = head;
         while (cur) {
             if (cur->val == val) {
                 pre->next = cur->next;
@@ -22,9 +22,7 @@ public:
             }
             cur = cur->next;
         }
-        ListNode *res = dummy->next;
-        delete dummy;
-        return res;
+        return dummy.next;
     }
 };
 
