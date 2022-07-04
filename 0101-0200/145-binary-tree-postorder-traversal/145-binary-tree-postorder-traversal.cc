@@ -11,16 +11,16 @@ struct TreeNode {
 };
  
 class Solution {
-    void inorder(TreeNode* node, vector<int>& visited) {
+    void postorder(TreeNode* node, vector<int>& res) {
         if (!node) return;
-        inorder(node->left, visited);
-        visited.push_back(node->val);
-        inorder(node->right, visited);
+        postorder(node->left, res);
+        postorder(node->right, res);
+        res.push_back(node->val);
     }
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> visited;
-        inorder(root, visited);
-        return visited;
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        postorder(root, res);
+        return res;
     }
 };
