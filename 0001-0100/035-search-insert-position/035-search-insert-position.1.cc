@@ -7,11 +7,13 @@ public:
     int searchInsert(vector<int>& nums, int target) {
         int l = 0, r = nums.size() - 1;
         while (l <= r) {
-            int mid = 1 + (r - l) >> 1;
-            if (target > nums[mid]) {
+            int mid = (l + r) >> 1;
+            if (nums[mid] < target) {
                 l = mid + 1;
-            } else {
+            } else if (nums[mid] > target) {
                 r = mid - 1;
+            } else {
+                return mid;
             }
         }
         return l;
