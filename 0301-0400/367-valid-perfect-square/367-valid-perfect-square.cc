@@ -4,13 +4,13 @@ public:
         int l = 1, r = num;
         while (l < r) {
             int mid = l + (r-l)/2;
-            if (num <= (long long)mid * mid) {
+            if (num <= (long)mid * mid) {
                 r = mid;
             } else {
                 l = mid + 1;
             }
         }
 
-        return (long long)l*l == num;
+        return (long)l * l == num;
     }
 };

@@ -5,21 +5,19 @@ using namespace std;
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
-        int l = 0, r = 0, sum = 0;
-        
-        int min = 0;
-        while (r < nums.size()) {
+        int n = nums.size(), l = 0, r = 0;
+        int sum = 0, res = n + 1;
+
+        for (int r = 0; r < n; ++r) {
             sum += nums[r];
             if (sum >= target) {
-                if (min == 0) min = r - l + 1;
                 while (sum >= target + nums[l]) {
-                   sum -= nums[l++];
+                    sum -= nums[l++];
                 }
-                if (r - l  + 1 < min) min = r -l + 1;
+                res = min(res, r - l + 1);
             }
-            r++;
         }
-        return min;
+        return res == n + 1? 0 : res;
     }
 };
 

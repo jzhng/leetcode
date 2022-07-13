@@ -13,7 +13,7 @@ public:
             ++i;
         }
 
-        int l = i-1, r = i;
+        int l = i - 1, r = i;
         while (l >= 0 && r < nr) {
             if (abs(nums[l]) > abs(nums[r])) {
                 res.push_back(nums[r] * nums[r]);
@@ -25,11 +25,11 @@ public:
         }
 
         if (l < 0) {
-            while (r < nr) { res.push_back(nums[r] * nums[r]); ++r; }
+            for (; r < nr; ++r) { res.push_back(nums[r] * nums[r]); }
         }
 
         if (r >= nr) {
-            while (l >= 0) { res.push_back(nums[l] * nums[l]); --l; }
+            for (; l >= 0; --l) { res.push_back(nums[l] * nums[l]); }
         }
 
         return res;
