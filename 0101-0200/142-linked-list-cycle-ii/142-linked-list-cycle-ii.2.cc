@@ -27,16 +27,15 @@ public:
             }
         }
 
-        if (fast == nullptr || fast->next == nullptr) {
+        if (!fast || !fast->next) {
             return nullptr;
         }
 
-        fast = head;
-        while (slow != fast) {
+        while (slow != head) {
             slow = slow->next;
-            fast = fast->next;
+            head = head->next;
         }
-        return fast;
+        return head;
     }
 };
 
