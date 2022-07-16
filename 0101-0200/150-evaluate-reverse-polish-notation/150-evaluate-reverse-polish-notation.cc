@@ -2,42 +2,38 @@
 #include <string>
 #include <vector>
 #include <stack>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        stack<int> operands;
+        stack<int> st;
 
-        set<string> operators;
-        operators.insert("+");
-        operators.insert("-");
-        operators.insert("*");
-        operators.insert("/");
+        unordered_set<string> operators({ "+", "-", "*", "/" });
 
         for (auto & token: tokens) {
             if (operators.count(token) == 0) {
-                operands.push(stoi(token));
+                st.push(stoi(token));
             } else {
-                int operand_a = operands.top();
-                operands.pop();
-                int operand_b = operands.top();
-                operands.pop();
+                int num1 = st.top();
+                st.pop();
+                int num2 = st.top();
+                st.pop();
                 int res;
                 if (token == "+") {
-                    res = operand_a + operand_b;
+                    res = num1 + num2;
                 } else if (token == "-") {
-                    res = operand_b - operand_a;
+                    res = num2 - num1;
                 } else if (token == "*") {
-                    res = operand_a * operand_b;
+                    res = num1 * num2;
                 } else {
-                    res = operand_b / operand_a;
+                    res = num2 / num1;
                 }
-                operands.push(res);
+                st.push(res);
             }
         }
-        return operands.top();
+        return st.top();
     }
 };
 

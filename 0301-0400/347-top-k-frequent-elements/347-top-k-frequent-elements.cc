@@ -14,17 +14,9 @@ public:
         };
         priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(compare)> pq(compare);
 
-        int cnt = 0;
-        for (auto &n: freq) {
-            ++cnt;
-            if (cnt > k) {
-                if (pq.top().second < n.second) {
-                    pq.pop();
-                    pq.push(n);
-                }
-            } else {
-                pq.push(n);
-            }
+        for (auto &item: freq) {
+             pq.push(item);
+            if (pq.size() > k) pq.pop();
         }
 
         vector<int> res;
