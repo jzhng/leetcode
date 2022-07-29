@@ -5,20 +5,19 @@ using namespace std;
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int l = 0, r = height.size() - 1;
-        int max = 0;
-        while (l < r ) {
-            int area = (r - l) * (height[l] > height[r] ? height[r] : height[l]);
-            if (area > max) {
-                max = area;
-            }
+        int n = height.size(), l = 0, r = n - 1;
+        
+        int area = 0;
+        while (l < r) {
+            area = max(area, (r - l) * min(height[l], height[r]));
             if (height[l] < height[r]) {
-                l++;
+                ++l;
             } else {
-                r--;
+                --r;
             }
         }
-        return max;
+
+        return area;
     }
 };
 
