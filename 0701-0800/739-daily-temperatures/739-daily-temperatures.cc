@@ -6,16 +6,16 @@ using namespace std;
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
-        int nt = temperatures.size();
-        vector<int> res(nt, 0);
-        stack<int> stk;
-        for (int i = 0; i < nt; ++i) {
-            while (!stk.empty() && temperatures[i] > temperatures[stk.top()]) {
-                int t = stk.top();
+        int n = temperatures.size();
+        vector<int> res(n, 0);
+        stack<int> st;
+        for (int i = 0; i < n; ++i) {
+            while (!st.empty() && temperatures[i] > temperatures[st.top()]) {
+                int t = st.top();
                 res[t] = i - t;
-                stk.pop();
+                st.pop();
             }
-            stk.push(i);
+            st.push(i);
         }
         return res;
     }
